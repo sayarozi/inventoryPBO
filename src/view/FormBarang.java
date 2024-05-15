@@ -3,19 +3,80 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+import controller.*;
+import java.awt.TextField;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
  * @author ROZI
  */
 public class FormBarang extends javax.swing.JFrame {
-
+    controllerBarang cBarang;
     /**
      * Creates new form FormBarang
      */
     public FormBarang() {
         initComponents();
+        cBarang = new controllerBarang(this);
+        cBarang.tampil_tabel();
     }
+        
+    public void tampilkantabel(){
+        cBarang = new controllerBarang(this);
+        cBarang.tampil_tabel();
+    }
+
+    public JTable getTblBarang() {
+        return tblBarang;
+    }
+
+    public void setTblBarang(JTable tblBarang) {
+        this.tblBarang = tblBarang;
+    }
+
+    public TextField getTxtHarga() {
+        return txtHarga;
+    }
+
+    public void setTxtHarga(TextField txtHarga) {
+        this.txtHarga = txtHarga;
+    }
+
+    public TextField getTxtJumlah() {
+        return txtJumlah;
+    }
+
+    public void setTxtJumlah(TextField txtJumlah) {
+        this.txtJumlah = txtJumlah;
+    }
+
+    public TextField getTxtKode() {
+        return txtKode;
+    }
+
+    public void setTxtKode(TextField txtKode) {
+        this.txtKode = txtKode;
+    }
+
+    public TextField getTxtMerek() {
+        return txtMerek;
+    }
+
+    public void setTxtMerek(TextField txtMerek) {
+        this.txtMerek = txtMerek;
+    }
+
+    public TextField getTxtNama() {
+        return txtNama;
+    }
+
+    public void setTxtNama(TextField txtNama) {
+        this.txtNama = txtNama;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
