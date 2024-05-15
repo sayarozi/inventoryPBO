@@ -66,7 +66,6 @@ public class controllerBarang {
          JOptionPane.showMessageDialog(frame, "Berhasil Mengahpaus data");
      }
 
-     
     public void bersih(){
         frame.setTxtKode("");
         frame.setTxtNama("");
