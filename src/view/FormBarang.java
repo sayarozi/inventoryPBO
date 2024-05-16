@@ -4,7 +4,6 @@
  */
 package view;
 import controller.*;
-import java.awt.TextField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -36,44 +35,44 @@ public class FormBarang extends javax.swing.JFrame {
         this.tblBarang = tblBarang;
     }
 
-    public TextField getTxtHarga() {
+    public JTextField getTxtHarga() {
         return txtHarga;
     }
 
-    public void setTxtHarga(TextField txtHarga) {
-        this.txtHarga = txtHarga;
+    public void setTxtHarga(int txtHarga) {
+        this.txtHarga.setText(Integer.toString(txtHarga));
     }
 
-    public TextField getTxtJumlah() {
+    public JTextField getTxtJumlah() {
         return txtJumlah;
     }
 
-    public void setTxtJumlah(TextField txtJumlah) {
-        this.txtJumlah = txtJumlah;
+    public void setTxtJumlah(int txtJumlah) {
+        this.txtJumlah.setText(Integer.toString(txtJumlah));
     }
 
-    public TextField getTxtKode() {
+    public JTextField getTxtKode() {
         return txtKode;
     }
 
-    public void setTxtKode(TextField txtKode) {
-        this.txtKode = txtKode;
+    public void setTxtKode(String txtKode) {
+        this.txtKode.setText(txtKode);
     }
 
-    public TextField getTxtMerek() {
-        return txtMerek;
+    public JTextField getTxtMerek() {
+        return getTxtMerek();
     }
 
-    public void setTxtMerek(TextField txtMerek) {
-        this.txtMerek = txtMerek;
+    public void setTxtMerek(String txtMerek) {
+        this.txtMerek.setText(txtMerek);
     }
 
-    public TextField getTxtNama() {
-        return txtNama;
+    public JTextField getTxtNama() {
+        return getTxtNama();
     }
 
-    public void setTxtNama(TextField txtNama) {
-        this.txtNama = txtNama;
+    public void setTxtNama(String txtNama) {
+        this.txtNama.setText(txtNama);
     }
     
     
@@ -162,14 +161,39 @@ public class FormBarang extends javax.swing.JFrame {
         });
 
         btnUbah.setLabel("Ubah");
+        btnUbah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUbahActionPerformed(evt);
+            }
+        });
 
         btnSimpan.setLabel("Simpan");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
 
         btnBersih.setLabel("Bersih");
+        btnBersih.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBersihActionPerformed(evt);
+            }
+        });
 
         btnHapus.setLabel("Hapus");
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
 
         btnKeluar.setLabel("Keluar");
+        btnKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKeluarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -237,8 +261,6 @@ public class FormBarang extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        btnSimpan.getAccessibleContext().setAccessibleName("Simpan");
-
         tblBarang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -250,6 +272,11 @@ public class FormBarang extends javax.swing.JFrame {
                 "Kode Barang", "Nama Barang", "Jumlah", "Harga", "Merek"
             }
         ));
+        tblBarang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblBarangMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblBarang);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -289,6 +316,49 @@ public class FormBarang extends javax.swing.JFrame {
     private void txtHargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHargaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHargaActionPerformed
+
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+        // TODO add your handling code here:
+        cBarang.tambahData();
+        tampilkantabel();
+        cBarang.bersih();
+        txtKode.requestFocus();
+    }//GEN-LAST:event_btnSimpanActionPerformed
+
+    private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
+        // TODO add your handling code here:
+        cBarang.ubahData();
+        tampilkantabel();
+        cBarang.bersih();
+        txtKode.requestFocus();
+    }//GEN-LAST:event_btnUbahActionPerformed
+
+    private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
+        // TODO add your handling code here:
+        cBarang.keluar();
+    }//GEN-LAST:event_btnKeluarActionPerformed
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        // TODO add your handling code here:
+        cBarang.hapusData();
+        tampilkantabel();
+    }//GEN-LAST:event_btnHapusActionPerformed
+
+    private void btnBersihActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBersihActionPerformed
+        // TODO add your handling code here:
+        cBarang.bersih();
+    }//GEN-LAST:event_btnBersihActionPerformed
+
+    private void tblBarangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBarangMouseClicked
+        // TODO add your handling code here:
+        int pilih = tblBarang.getSelectedRow();
+        txtKode.setText(tblBarang.getModel().getValueAt(pilih, 0).toString());
+        txtNama.setText(tblBarang.getModel().getValueAt(pilih, 1).toString());
+        txtJumlah.setText(tblBarang.getModel().getValueAt(pilih, 2).toString());
+        txtHarga.setText(tblBarang.getModel().getValueAt(pilih, 3).toString());
+        txtMerek.setText(tblBarang.getModel().getValueAt(pilih, 4).toString());
+        
+    }//GEN-LAST:event_tblBarangMouseClicked
 
     /**
      * @param args the command line arguments
